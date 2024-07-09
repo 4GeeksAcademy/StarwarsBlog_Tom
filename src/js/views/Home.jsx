@@ -8,15 +8,31 @@ import { CartaPersonajes } from "../component/CartaPersonajes.jsx";
 export const Home = () => {
 
 	const { store, actions } = useContext(Context);
+	const validacionPersonajes = store.personajes;
+	console.log(("lista de personajes: ", validacionPersonajes));
 
-		const validacionPersonajes = store.personajes; //properties porque es lo que viene definido en la API
-		console.log(("lista de personajes: ", validacionPersonajes));
 	return (
+		<div>
+			<div className="container mt-5">
+				<h1 className="link-danger">Personajes</h1>
+				<div className="container principal">
+					{store.personajes?.map(elemento =>
+						<div key={elemento.uid} className="carta-personajes">
+							<CartaPersonajes name={elemento.name} id={elemento.uid} />
+						</div>
+					)}
+				</div>
+			</div>
 
-		<div className="text-center mt-5">
-			<h1 className="link-danger">Characters</h1>
-			<div className="container"> 
-				{store.personajes?.map(elemento => <CartaPersonajes key={elemento.uid} name= {elemento.name}   id={elemento.uid}/>)}
+			<div className="container mt-5">
+				<h1 className="link-danger">Planetas</h1>
+				<div className="container principal">
+					{store.personajes?.map(elemento =>
+						<div key={elemento.uid} className="carta-personajes">
+							<CartaPersonajes name={elemento.name} id={elemento.uid} />
+						</div>
+					)}
+				</div>
 			</div>
 		</div>
 	);

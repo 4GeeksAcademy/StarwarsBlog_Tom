@@ -43,8 +43,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return respuesta.json()
 
 				}).then (datosRespuesta => {
-					console.log('Datos del personaje: ', datosRespuesta.result.properties);
-					setStore  ({ personaje: datosRespuesta.result.properties });
+					console.log('Datos del personaje: ', datosRespuesta.result);
+					setStore  ({ personaje: datosRespuesta.result });
 					return datosRespuesta
 				})
 				.catch(esError => {

@@ -6,7 +6,7 @@ export const Navbar = () => {
 		<nav className="navbar bg-body-tertiary">
 		<div className="container">
 		  <a className="navbar-brand" href="/">
-			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCUPS_ZG-j_cnaz0nYpJkY9wtbR63Lwxdhww&s" alt="Bootstrap" width="30" height="24"/>
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCUPS_ZG-j_cnaz0nYpJkY9wtbR63Lwxdhww&s" alt="Bootstrap" width="100" height="50"/>
 		  </a>
 		  <ul className="navbar-nav">
         <li className="nav-item dropdown">
