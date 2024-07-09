@@ -3,15 +3,27 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
-			</div>
-		</nav>
+		<nav className="navbar bg-body-tertiary">
+		<div className="container">
+		  <a className="navbar-brand" href="/">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCUPS_ZG-j_cnaz0nYpJkY9wtbR63Lwxdhww&s" alt="Bootstrap" width="30" height="24"/>
+		  </a>
+		  <ul className="navbar-nav">
+        <li className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Favoritos
+          </a>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="#">Action</a></li>
+            <li><a className="dropdown-item" href="#">Another action</a></li>
+            <li><a className="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+		</div>
+	
+     
+   
+	  </nav>
 	);
 };

@@ -1,43 +1,81 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			personaje: {},
+			planetas: [],
+			
+			baseUrl: "https://www.swapi.tech/api/",
+
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
+
+			obtenerCaracteres: async () => {
 				const store = getStore();
+				const actions = getActions();
+				return await fetch(`${store.baseUrl}people/`, {
+					method: 'GET',
+				}).then (respuesta => {
+					if (!respuesta.ok) {
+						throw new Error ('No fue ok ', respuesta.statusText)
+					}
+					return respuesta.json()
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+				}).then (datosRespuesta => {
+					console.log('Respuesta del servicio: ', datosRespuesta);
+					setStore  ({ personajes: datosRespuesta.results});
+					return datosRespuesta
+				})
+				.catch(esError => {
+					console.log('Error: '+ esError);
+				})
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
+			},
+
+
+			obtenerPersonaje: async (id) => {
+				const store = getStore();
+				return await fetch(`${store.baseUrl}people/${id}`, {
+					method: 'GET',
+				}).then (respuesta => {
+					if (!respuesta.ok) {
+						throw new Error ('No fue ok ', respuesta.statusText)
+					}
+					return respuesta.json()
+
+				}).then (datosRespuesta => {
+					console.log('Datos del personaje: ', datosRespuesta.result.properties);
+					setStore  ({ personaje: datosRespuesta.result.properties });
+					return datosRespuesta
+				})
+				.catch(esError => {
+					console.log('Error: '+ esError);
+				})
+
+			},
+
+
+			obtenerPlanetas: () => {
+				const store = getStore();
+				return fetch (`${store.baseUrl}planets/`, {
+					method: 'GET',
+				}).then (respuesta => {
+					if (!respuesta.ok) {
+						throw new Error ('No fue ok ', respuesta.statusText)
+					}
+					return respuesta.json()
+
+				}).then (datosRespuesta => {
+					console.log('Respuesta del servicio: ', datosRespuesta);
+					setStore  ({ planetas: datosRespuesta });
+					return datosRespuesta
+				})
+				.catch(esError => {
+					console.log('Error: '+ esError);
+				})
+
+			},
+
+			
 		}
 	};
 };
