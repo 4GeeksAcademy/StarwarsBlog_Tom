@@ -11,6 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { CartaPersonajes } from "./component/CartaPersonajes.jsx";
 import { Personaje } from "./component/Personaje.jsx";
+import { Planeta } from "./component/Planeta.jsx";
 
 
 //create your first component
@@ -28,6 +29,7 @@ const Layout = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/:uid" element={<Personaje />} />
+						<Route path="/planets/:uid" element={<Planeta />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />
