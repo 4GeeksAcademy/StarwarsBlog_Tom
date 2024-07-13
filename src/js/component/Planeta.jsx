@@ -7,6 +7,7 @@ export const Planeta = () => {  //no le pasamos nada porque lo estamos haciendo 
     const { store, actions } = useContext(Context);
     const [caracteristicas, setCaracteristicas] = useState(null)
     const { uid } = useParams() //desestructura del id en la url.
+    const urlPlanetas = `https://starwars-visualguide.com/assets/img/planets/`
 
 
     useEffect(() => {
@@ -25,30 +26,44 @@ export const Planeta = () => {  //no le pasamos nada porque lo estamos haciendo 
 
 
     return (
-        <div className="container-fluid">
-
-            <div className="row">
-                <div className="col">
-                    imagen
+<div className="container my-5">
+            <div className="row mb-4">
+                <div className="col-md-8">
+                    <h1>{caracteristicas.properties.name}</h1>                    
                 </div>
                 <div className="col">
-                    {caracteristicas.name}
+                <img className="card-img-top" src={urlPlanetas+uid+`.jpg`} />
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col">{caracteristicas.properties.climate}
+            <div className="row text-center">
+                <div className="col-md-2">
+                    <h5>Orbital period</h5>
+                    <p>{caracteristicas.properties.orbital_period}</p>
                 </div>
-                <div className="col">{caracteristicas.properties.rotation_period}
+                <div className="col-md-2">
+                    <h5>Climate</h5>
+                    <p>{caracteristicas.properties.climate}</p>
                 </div>
-                <div className="col">{caracteristicas.properties.terrain}
+                <div className="col-md-2">
+                    <h5>Diameter</h5>
+                    <p>{caracteristicas.properties.diameter}</p>
                 </div>
-                <div className="col">{caracteristicas.properties.diameter}
+                <div className="col-md-2">
+                    <h5>Populatio</h5>
+                    <p>{caracteristicas.properties.population}</p>
+                </div>
+                <div className="col-md-2">
+                    <h5>Terrain</h5>
+                    <p>{caracteristicas.properties.terrain}</p>
+                </div>
+                <div className="col-md-2">
+                    <h5>Gravity</h5>
+                    <p>{caracteristicas.properties.gravity}</p>
                 </div>
             </div>
-        </div >
-
-
+        </div>
     );
 
 };
+

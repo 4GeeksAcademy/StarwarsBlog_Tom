@@ -8,6 +8,7 @@ export const Personaje = () => {  //no le pasamos nada porque lo estamos haciend
     const { store, actions } = useContext(Context);
     const [caracteristicas, setCaracteristicas] = useState(null)
     const { uid } = useParams() //desestructura del id en la url.
+     const urlImagen = `https://starwars-visualguide.com/assets/img/characters/`
 
 
 
@@ -34,6 +35,9 @@ export const Personaje = () => {  //no le pasamos nada porque lo estamos haciend
                 <div className="col-md-8">
                     <h1>{caracteristicas.properties.name}</h1>
                     <p>{caracteristicas.description}</p>
+                </div>
+                <div className="col">
+                <img className="card-img-top" src={urlImagen+uid+`.jpg`} />
                 </div>
             </div>
 

@@ -6,6 +6,7 @@ import { Context } from "../store/appContext"
 export const CartaPersonajes = ({ name, id }) => {
   const { store, actions } = useContext(Context);
   const [caracteristica, setCaracteristica] = useState(null)
+  const urlImagen = `https://starwars-visualguide.com/assets/img/characters/`
 
   useEffect(() => {
     const detallesPlaneta = async () => {
@@ -37,7 +38,7 @@ export const CartaPersonajes = ({ name, id }) => {
 
   return (
     <div className="card" style={{ width: '18rem' }}>
-      <img className="card-img-top" src="" />
+      <img className="card-img-top" src={urlImagen+id+`.jpg`} />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
       </div>
